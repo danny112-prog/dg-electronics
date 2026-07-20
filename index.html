@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DG Electronics | Trusted Gadget Store – Phones, Laptops & Accessories</title>
+  <meta name="description" content="DG Electronics offers premium phones, laptops, and accessories with genuine products, fast delivery, and expert support. Shop the latest tech at unbeatable prices." />
+  <meta name="keywords" content="electronics, phones, laptops, accessories, smartphones, gadgets, DG Electronics" />
+  <meta name="author" content="DG Electronics" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="DG Electronics | Trusted Gadget Store" />
+  <meta property="og:description" content="Premium phones, laptops, and accessories with genuine products and fast delivery." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.dgelectronics.com" />
+  <meta property="og:image" content="images/hero.svg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DG Electronics | Trusted Gadget Store" />
+  <meta name="twitter:description" content="Premium phones, laptops, and accessories with genuine products and fast delivery." />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.dgelectronics.com" />
+
+  <link rel="stylesheet" href="style.css" />
+  <script>
+    window.addEventListener('error', function (e) {
+      var t = e.target;
+      if (t && t.tagName === 'IMG' && t.src.indexOf('images/placeholder.svg') === -1) {
+        t.src = 'images/placeholder.svg';
+      }
+    }, true);
+  </script>
+</head>
+<body>
+
+  <!-- Loading Screen -->
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-spinner"></div>
+      <p>DG Electronics</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="navbar" id="navbar">
+    <a class="brand" href="#home" aria-label="DG Electronics Home">
+      <img src="images/logo.svg" alt="DG Electronics logo" width="42" height="42" />
+      <span>DG Electronics</span>
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-links" aria-label="Primary navigation">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+      <button class="cart-btn" id="cartButton" aria-label="View cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="home">
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content reveal">
+        <p class="eyebrow">Your Trusted Gadget Store</p>
+        <h1>Upgrade your tech life with premium devices.</h1>
+        <p>Explore the latest smartphones, laptops, and accessories with genuine products, fast delivery, and expert support.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#products">Shop Now</a>
+          <a class="btn btn-secondary" href="#about">Learn More</a>
+        </div>
+        <div class="hero-stats">
+          <div class="reveal">
+            <strong>10k+</strong>
+            <span>Happy Customers</span>
+          </div>
+          <div class="reveal">
+            <strong>24/7</strong>
+            <span>Support</span>
+          </div>
+          <div class="reveal">
+            <strong>100%</strong>
+            <span>Genuine Products</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&h=600&fit=crop" alt="Modern electronics showcase" width="600" height="400" />
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Featured Products</p>
+        <h2>Top picks for every tech lover</h2>
+      </div>
+
+      <div class="products-toolbar reveal">
+        <div class="search-box">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="searchInput" placeholder="Search products..." aria-label="Search products" />
+        </div>
+        <div class="category-tabs" role="tablist" aria-label="Product categories">
+          <button class="tab active" data-category="all" role="tab" aria-selected="true">All</button>
+          <button class="tab" data-category="phones" role="tab" aria-selected="false">Phones</button>
+          <button class="tab" data-category="laptops" role="tab" aria-selected="false">Laptops</button>
+          <button class="tab" data-category="accessories" role="tab" aria-selected="false">Accessories</button>
+        </div>
+        <div class="sort-box">
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="default">Sort by</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="name">Name A-Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid" role="list"></div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section category-section" aria-labelledby="cat-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Shop by Category</p>
+        <h2 id="cat-heading">Find the perfect gadget for every need</h2>
+      </div>
+      <div class="category-grid">
+        <article class="category-card reveal">
+          <div class="category-icon">📱</div>
+          <h3>Phones</h3>
+          <p>Premium smartphones from top brands with latest features.</p>
+        </article>
+        <article class="category-card reveal">
+          <div class="category-icon">💻</div>
+          <h3>Laptops</h3>
+          <p>Powerful laptops for work, study, design, and entertainment.</p>
+        </article>
+        <article class="category-card reveal">
+          <div class="category-icon">🎧</div>
+          <h3>Accessories</h3>
+          <p>Earbuds, chargers, smartwatches, and more.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section" aria-labelledby="about-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">About Us</p>
+        <h2 id="about-heading">Your one-stop gadget destination</h2>
+      </div>
+      <div class="about-content reveal">
+        <div class="about-text">
+          <p>Founded in 2020, DG Electronics has grown from a small tech shop into a trusted online destination for premium gadgets. We partner directly with leading brands to bring you authentic products at competitive prices.</p>
+          <p>Our mission is simple: make quality technology accessible to everyone. Whether you're upgrading your phone, finding the perfect laptop, or picking up accessories, we've got you covered with fast shipping and dedicated support.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section why-section" aria-labelledby="why-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Why Choose Us</p>
+        <h2 id="why-heading">Reliable tech, delivered with care</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <div class="about-icon">✅</div>
+          <h3>Genuine Products</h3>
+          <p>Every device is sourced from trusted brands and covered by warranty.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-icon">🚚</div>
+          <h3>Fast Delivery</h3>
+          <p>Enjoy speedy shipping and reliable tracking on every order.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-icon">💰</div>
+          <h3>Affordable Pricing</h3>
+          <p>Get premium gear at competitive prices without compromising quality.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-icon">🛡️</div>
+          <h3>2-Year Warranty</h3>
+          <p>Extended warranty coverage on all premium devices for peace of mind.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-icon">🔄</div>
+          <h3>Easy Returns</h3>
+          <p>30-day hassle-free returns if you're not completely satisfied.</p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-icon">💬</div>
+          <h3>Expert Support</h3>
+          <p>Our tech experts are available 24/7 to help with any questions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="section offer-section" aria-labelledby="offer-heading">
+      <div class="offer-banner reveal">
+        <div>
+          <p class="eyebrow">Special Offers</p>
+          <h2 id="offer-heading">Enjoy up to 25% off selected gadgets this week.</h2>
+          <p>Limited-time savings on phones, laptops, and accessories for early shoppers.</p>
+        </div>
+        <a class="btn btn-primary" href="#contact">Claim Deal</a>
+      </div>
+      <div class="offer-grid">
+        <article class="offer-card reveal">
+          <h3>Free Express Delivery</h3>
+          <p>On orders above ₦500,000.</p>
+        </article>
+        <article class="offer-card reveal">
+          <h3>Trade-In Bonus</h3>
+          <p>Get extra credit on your old device.</p>
+        </article>
+        <article class="offer-card reveal">
+          <h3>Extended Warranty</h3>
+          <p>Enjoy 2 years on premium devices.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="section reviews-section" aria-labelledby="reviews-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Customer Reviews</p>
+        <h2 id="reviews-heading">What our customers say</h2>
+      </div>
+      <div class="review-grid">
+        <article class="review-card reveal">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>"The service was fast and the products were exactly as described. Highly recommend!"</p>
+          <div class="review-author">
+            <div class="review-avatar">S</div>
+            <strong>Sarah M.</strong>
+          </div>
+        </article>
+        <article class="review-card reveal">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>"Amazing quality and support. I recommend DG Electronics to everyone."</p>
+          <div class="review-author">
+            <div class="review-avatar">D</div>
+            <strong>David R.</strong>
+          </div>
+        </article>
+        <article class="review-card reveal">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>"Best prices I've found online. The iPhone I bought was brand new and well-packed."</p>
+          <div class="review-author">
+            <div class="review-avatar">A</div>
+            <strong>Amina K.</strong>
+          </div>
+        </article>
+        <article class="review-card reveal">
+          <div class="review-stars" aria-label="4 out of 5 stars">★★★★☆</div>
+          <p>"Great experience overall. Delivery was a bit delayed but product quality was perfect."</p>
+          <div class="review-author">
+            <div class="review-avatar">J</div>
+            <strong>James T.</strong>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq-section" aria-labelledby="faq-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Are all products genuine?</summary>
+          <p>Yes! We source all products directly from authorized distributors and brands. Every item comes with a manufacturer warranty.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How long does delivery take?</summary>
+          <p>Standard delivery takes 3-5 business days. Express delivery (available on orders above ₦500,000) arrives within 1-2 business days.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What is your return policy?</summary>
+          <p>We offer a 30-day hassle-free return policy. If you're not satisfied, simply initiate a return through your account or contact our support team.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Do you offer warranty on products?</summary>
+          <p>Yes, all products come with a standard 1-year manufacturer warranty. Premium devices include an extended 2-year warranty.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How can I track my order?</summary>
+          <p>Once your order is shipped, you'll receive a tracking number via email and SMS. You can also track your order from your account dashboard.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section newsletter-section" aria-labelledby="newsletter-heading">
+      <div class="newsletter-card reveal">
+        <div class="newsletter-content">
+          <p class="eyebrow">Newsletter</p>
+          <h2 id="newsletter-heading">Stay in the loop</h2>
+          <p>Subscribe for exclusive deals, new arrivals, and tech tips delivered to your inbox.</p>
+        </div>
+        <form class="newsletter-form" id="newsletterForm" aria-label="Newsletter signup">
+          <input type="email" placeholder="Enter your email" required aria-label="Email address" />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Contact Us</p>
+        <h2 id="contact-heading">Let's connect</h2>
+      </div>
+      <div class="contact-card">
+        <div class="contact-item reveal">
+          <div class="contact-icon">📞</div>
+          <h3>Phone</h3>
+          <p><a href="tel:+2349031355560">+234 (903) 135-5560</a></p>
+        </div>
+        <div class="contact-item reveal">
+          <div class="contact-icon">📧</div>
+          <h3>Email</h3>
+          <p><a href="mailto:danielokolie764@gmail.com">danielokolie764@gmail.com</a></p>
+        </div>
+        <div class="contact-item reveal">
+          <div class="contact-icon">💬</div>
+          <h3>WhatsApp</h3>
+          <p><a href="https://wa.me/2349031355560" target="_blank" rel="noopener">+234 (903) 135-5560</a></p>
+        </div>
+        <div class="contact-item reveal">
+          <div class="contact-icon">📍</div>
+          <h3>Location</h3>
+          <p>No 78 Market Road, Oyigbo, Rivers State</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+  <aside class="cart-sidebar" id="cartSidebar" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="cart-close" id="cartClose" aria-label="Close cart">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="cart-empty">Your cart is empty</p>
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <span id="cartTotal">₦0</span></div>
+      <button class="btn btn-primary checkout-btn" onclick="goToCheckout()">Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Product Quick View Modal -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true"></div>
+  <div class="modal" id="productModal" role="dialog" aria-label="Product details" aria-hidden="true">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a class="footer-brand" href="#home">
+          <img src="images/logo.svg" alt="DG Electronics" width="36" height="36" />
+          <span>DG Electronics</span>
+        </a>
+        <p>Your trusted destination for premium phones, laptops, and accessories. Genuine products, fast delivery, expert support.</p>
+        <div class="social-links" aria-label="Social media links">
+          <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://twitter.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="https://youtube.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#products">Products</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Categories</h4>
+        <ul>
+          <li><a href="#products" data-category="phones">Phones</a></li>
+          <li><a href="#products" data-category="laptops">Laptops</a></li>
+          <li><a href="#products" data-category="accessories">Accessories</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <ul class="footer-contact">
+          <li>📍 No 78 Market Road, Oyigbo, Rivers State</li>
+          <li>📞 <a href="tel:+2349031355560">+234 (903) 135-5560</a></li>
+          <li>📧 <a href="mailto:danielokolie764@gmail.com">danielokolie764@gmail.com</a></li>
+          <li>🕐 Mon - Sat: 9:00 AM - 8:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> DG Electronics. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <a href="https://wa.me/2349031355560" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "DG Electronics",
+    "description": "Premium phones, laptops, and accessories with genuine products and fast delivery.",
+    "url": "https://www.dgelectronics.com",
+    "telephone": "+234-903-135-5560",
+    "email": "danielokolie764@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No 78 Market Road",
+      "addressLocality": "Oyigbo",
+      "addressRegion": "Rivers State",
+      "addressCountry": "NG"
+    }
+  }
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>

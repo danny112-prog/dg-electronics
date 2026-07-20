@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | DG Electronics</title>
+  <meta name="description" content="Get in touch with DG Electronics. Contact us for support, inquiries, or feedback." />
+  <meta property="og:title" content="Contact Us | DG Electronics" />
+  <meta property="og:description" content="Get in touch with DG Electronics. Contact us for support, inquiries, or feedback." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.dgelectronics.com/contact.html" />
+  <meta property="og:site_name" content="DG Electronics" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://www.dgelectronics.com/contact.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css?v=3.0" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="loader" id="loader"><div class="loader-inner"><div class="loader-spinner"></div><p>DG Electronics</p></div></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="navbar" id="navbar">
+    <a class="brand" href="/"><img src="/images/logo.svg" alt="DG Electronics" width="40" height="40" /><span>DG Electronics</span></a>
+    <div class="nav-search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="navSearch" placeholder="Search phones, laptops, accessories..." aria-label="Search products" />
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/#products">Products</a>
+      <a href="/track">Track Order</a>
+      <a href="/contact" class="active">Contact</a>
+      <a href="/faq">FAQ</a>
+      <div class="nav-user" id="navUser">
+        <button class="nav-user-btn" id="userMenuBtn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span id="userName">Account</span></button>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="/login" id="loginLink">Login</a>
+          <a href="/signup" id="signupLink">Sign Up</a>
+          <a href="/account" id="accountLink" style="display:none">My Account</a>
+          <a href="/admin" id="adminLink" style="display:none">Admin Panel</a>
+          <button id="logoutBtn" style="display:none">Logout</button>
+        </div>
+      </div>
+      <button class="cart-btn" id="cartButton"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span class="cart-count" id="cartCount">0</span></button>
+    </nav>
+  </header>
+
+  <main class="contact-page" id="main-content">
+    <div class="container">
+      <div class="page-header-section">
+        <p class="eyebrow">Get In Touch</p>
+        <h1>Contact Us</h1>
+        <p class="subtitle">Have a question or need help? We'd love to hear from you.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-form-card">
+          <h2>Send us a message</h2>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group"><label for="contactName">Full Name *</label><input type="text" id="contactName" name="name" required placeholder="Your name" /></div>
+              <div class="form-group"><label for="contactEmail">Email *</label><input type="email" id="contactEmail" name="email" required placeholder="your@email.com" /></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label for="contactPhone">Phone</label><input type="tel" id="contactPhone" name="phone" placeholder="+234 (xxx) xxx-xxxx" /></div>
+              <div class="form-group"><label for="contactSubject">Subject *</label><select id="contactSubject" name="subject" required><option value="">Select a subject</option><option value="Order Inquiry">Order Inquiry</option><option value="Payment Issue">Payment Issue</option><option value="Shipping & Delivery">Shipping & Delivery</option><option value="Return/Refund">Return/Refund</option><option value="Product Question">Product Question</option><option value="Technical Support">Technical Support</option><option value="Partnership">Partnership</option><option value="Other">Other</option></select></div>
+            </div>
+            <div class="form-group"><label for="contactMessage">Message *</label><textarea id="contactMessage" name="message" rows="5" required placeholder="How can we help you?"></textarea></div>
+            <button type="submit" class="btn btn-primary" id="contactSubmitBtn">Send Message</button>
+            <div id="contactSuccess" style="display:none" class="alert alert-success">Message sent successfully! We'll get back to you within 24 hours.</div>
+            <div id="contactError" style="display:none" class="alert alert-error"></div>
+          </form>
+        </div>
+
+        <div class="contact-info-panel">
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <h3>Phone</h3>
+            <p><a href="tel:+2349031355560">+234 (903) 135-5560</a></p>
+            <p class="text-muted">Mon - Fri, 9am - 6pm</p>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></div>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/2349031355560" target="_blank" rel="noopener">+234 (903) 135-5560</a></p>
+            <p class="text-muted">Chat with us anytime</p>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <h3>Email</h3>
+            <p><a href="mailto:danielokolie764@gmail.com">danielokolie764@gmail.com</a></p>
+            <p class="text-muted">We reply within 24 hours</p>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <h3>Store Address</h3>
+            <p>Oyigbo, Rivers State, Nigeria</p>
+            <p class="text-muted">Visit us in person</p>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-info-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <h3>Business Hours</h3>
+            <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+            <p>Saturday: 10:00 AM - 4:00 PM</p>
+            <p class="text-muted">Sunday: Closed</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-map-section">
+        <h2>Find Us</h2>
+        <div class="map-container">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15865.0!2d7.13!3d4.86!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x106930bf4e5a2b65%3A0x1c2b1b1b1b1b1b1b!2sOyigbo%2C%20Rivers%2C%20Nigeria!5e0!3m2!1sen!2sng!4v1" width="100%" height="400" style="border:0;border-radius:16px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="DG Electronics Store Location"></iframe>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <a href="https://wa.me/2349031355560" class="floating-whatsapp" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+  <footer class="site-footer">
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> DG Electronics. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/contact-page.js"></script>
+</body>
+</html>

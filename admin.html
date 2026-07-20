@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | DG Electronics</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .admin-page { padding: 2rem 5%; max-width: 1400px; margin: 0 auto; }
+    .admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+    .admin-header h1 { color: var(--primary-dark); font-size: 1.8rem; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-bottom: 2rem; }
+    .stat-card { background: var(--white); border-radius: var(--radius-lg); padding: 1.5rem; box-shadow: var(--shadow-sm); transition: transform 0.3s; }
+    .stat-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    .stat-label { color: var(--muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+    .stat-value { color: var(--primary-dark); font-size: 1.8rem; font-weight: 800; }
+    .stat-value.accent { color: var(--accent); }
+    .stat-value.success { color: #00c853; }
+    .stat-value.warning { color: #ff9800; }
+    .orders-table-wrapper { background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); overflow: hidden; }
+    .table-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid #f0f3f9; }
+    .table-header h2 { color: var(--primary-dark); font-size: 1.2rem; }
+    .refresh-btn { padding: 0.5rem 1rem; background: var(--accent); color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: all 0.3s; }
+    .refresh-btn:hover { background: var(--accent-hover); }
+    table { width: 100%; border-collapse: collapse; }
+    th { text-align: left; padding: 1rem 1.5rem; background: #f8faff; color: var(--muted); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; }
+    td { padding: 1rem 1.5rem; border-bottom: 1px solid #f0f3f9; color: var(--text); font-size: 0.92rem; }
+    tr:hover { background: #fafcff; }
+    .status-badge { padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.78rem; font-weight: 700; text-transform: capitalize; }
+    .status-paid { background: #e8f5e9; color: #2e7d32; }
+    .status-pending { background: #fff3e0; color: #e65100; }
+    .status-processing { background: #e3f2fd; color: #1565c0; }
+    .status-shipped { background: #f3e5f5; color: #7b1fa2; }
+    .status-delivered { background: #e8f5e9; color: #2e7d32; }
+    .view-btn { padding: 0.35rem 0.8rem; background: var(--accent); color: #fff; border: none; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: 600; transition: all 0.3s; }
+    .view-btn:hover { background: var(--accent-hover); }
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 3000; opacity: 0; visibility: hidden; transition: all 0.3s; backdrop-filter: blur(4px); }
+    .modal-overlay.open { opacity: 1; visibility: visible; }
+    .modal { position: fixed; top: 50%; left: 50%; transform: translate(-50%,-50%) scale(0.9); z-index: 3001; background: #fff; border-radius: var(--radius-lg); padding: 2rem; max-width: 600px; width: 90%; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow-lg); opacity: 0; visibility: hidden; transition: all 0.3s; }
+    .modal.open { opacity: 1; visibility: visible; transform: translate(-50%,-50%) scale(1); }
+    .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted); }
+    .modal h2 { color: var(--primary-dark); margin-bottom: 1rem; }
+    .modal-detail { display: flex; justify-content: space-between; padding: 0.5rem 0; border-bottom: 1px solid #f0f3f9; font-size: 0.92rem; }
+    .modal-detail span:first-child { color: var(--muted); }
+    .modal-detail span:last-child { color: var(--text); font-weight: 600; }
+    .modal-items { margin: 1rem 0; }
+    .modal-items h3 { color: var(--primary-dark); margin-bottom: 0.5rem; font-size: 1rem; }
+    .modal-item { display: flex; justify-content: space-between; padding: 0.4rem 0; font-size: 0.9rem; }
+    .status-select { padding: 0.3rem 0.5rem; border: 1px solid #e0e6f0; border-radius: 6px; font-size: 0.85rem; cursor: pointer; }
+    .no-orders { text-align: center; padding: 3rem; color: var(--muted); }
+    @media (max-width: 900px) { .stats-grid { grid-template-columns: 1fr 1fr; } table { font-size: 0.85rem; } th, td { padding: 0.7rem; } }
+    @media (max-width: 600px) { .stats-grid { grid-template-columns: 1fr; } .table-header { flex-direction: column; gap: 0.5rem; } }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">
+      <img src="images/logo.svg" alt="DG Electronics logo" width="42" height="42" />
+      <span>DG Electronics</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
+
+  <main class="admin-page">
+    <div class="admin-header">
+      <h1>Admin Dashboard</h1>
+      <button class="refresh-btn" onclick="loadAll()">Refresh Data</button>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Total Orders</div>
+        <div class="stat-value" id="statOrders">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Revenue</div>
+        <div class="stat-value accent" id="statRevenue">₦0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Pending Payments</div>
+        <div class="stat-value warning" id="statPending">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Total Customers</div>
+        <div class="stat-value success" id="statCustomers">0</div>
+      </div>
+    </div>
+
+    <div class="orders-table-wrapper">
+      <div class="table-header">
+        <h2>All Orders</h2>
+      </div>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Customer</th>
+              <th>Products</th>
+              <th>Total</th>
+              <th>Payment</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTableBody">
+            <tr><td colspan="8" class="no-orders">Loading orders...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- Order Detail Modal -->
+  <div class="modal-overlay" id="modalOverlay"></div>
+  <div class="modal" id="orderModal">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <h2>Order Details</h2>
+    <div id="modalContent"></div>
+  </div>
+
+  <script>
+    const API_BASE = window.location.origin + '/api';
+
+    async function loadStats() {
+      const res = await fetch(`${API_BASE}/admin/stats`);
+      const stats = await res.json();
+      document.getElementById('statOrders').textContent = stats.totalOrders;
+      document.getElementById('statRevenue').textContent = `₦${stats.totalRevenue.toLocaleString()}`;
+      document.getElementById('statPending').textContent = stats.pendingOrders;
+      document.getElementById('statCustomers').textContent = stats.totalCustomers;
+    }
+
+    async function loadOrders() {
+      const res = await fetch(`${API_BASE}/admin/orders`);
+      const orders = await res.json();
+      const tbody = document.getElementById('ordersTableBody');
+
+      if (orders.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="8" class="no-orders">No orders yet</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = orders.map(order => {
+        const date = new Date(order.created_at).toLocaleDateString('en-NG', { day: 'numeric', month: 'short', year: 'numeric' });
+        return `
+          <tr>
+            <td><strong>#${order.id}</strong></td>
+            <td>${order.customer_name}<br><small style="color:var(--muted)">${order.customer_email}</small></td>
+            <td>${order.products_summary || 'N/A'}</td>
+            <td><strong>₦${order.total.toLocaleString()}</strong></td>
+            <td><span class="status-badge status-${order.payment_status}">${order.payment_status}</span></td>
+            <td>
+              <select class="status-select" onchange="updateStatus(${order.id}, this.value)">
+                <option value="processing" ${order.order_status === 'processing' ? 'selected' : ''}>Processing</option>
+                <option value="shipped" ${order.order_status === 'shipped' ? 'selected' : ''}>Shipped</option>
+                <option value="delivered" ${order.order_status === 'delivered' ? 'selected' : ''}>Delivered</option>
+              </select>
+            </td>
+            <td>${date}</td>
+            <td><button class="view-btn" onclick="viewOrder(${order.id})">View</button></td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function viewOrder(id) {
+      const res = await fetch(`${API_BASE}/admin/orders/${id}`);
+      const order = await res.json();
+      const date = new Date(order.created_at).toLocaleString('en-NG');
+
+      document.getElementById('modalContent').innerHTML = `
+        <div class="modal-detail"><span>Order ID</span><span>#${order.id}</span></div>
+        <div class="modal-detail"><span>Date</span><span>${date}</span></div>
+        <div class="modal-detail"><span>Customer</span><span>${order.customer_name}</span></div>
+        <div class="modal-detail"><span>Email</span><span>${order.customer_email}</span></div>
+        <div class="modal-detail"><span>Phone</span><span>${order.customer_phone}</span></div>
+        <div class="modal-detail"><span>Address</span><span>${order.delivery_address}</span></div>
+        <div class="modal-detail"><span>Payment Status</span><span class="status-badge status-${order.payment_status}">${order.payment_status}</span></div>
+        <div class="modal-detail"><span>Paystack Ref</span><span>${order.paystack_ref || 'N/A'}</span></div>
+        <div class="modal-detail"><span>Order Status</span><span class="status-badge status-${order.order_status}">${order.order_status}</span></div>
+        <div class="modal-items">
+          <h3>Products</h3>
+          ${order.items.map(item => `
+            <div class="modal-item">
+              <span>${item.product_name} × ${item.quantity}</span>
+              <span>₦${(item.product_price * item.quantity).toLocaleString()}</span>
+            </div>
+          `).join('')}
+        </div>
+        <div class="modal-detail"><span>Subtotal</span><span>₦${order.subtotal.toLocaleString()}</span></div>
+        <div class="modal-detail"><span>Delivery</span><span>${order.delivery_fee === 0 ? 'FREE' : '₦' + order.delivery_fee.toLocaleString()}</span></div>
+        <div class="modal-detail" style="font-weight:700;font-size:1.05rem;"><span>Total</span><span style="color:var(--accent)">₦${order.total.toLocaleString()}</span></div>
+      `;
+
+      document.getElementById('modalOverlay').classList.add('open');
+      document.getElementById('orderModal').classList.add('open');
+    }
+
+    function closeModal() {
+      document.getElementById('modalOverlay').classList.remove('open');
+      document.getElementById('orderModal').classList.remove('open');
+    }
+
+    async function updateStatus(id, status) {
+      await fetch(`${API_BASE}/admin/orders/${id}/status`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ order_status: status })
+      });
+    }
+
+    document.getElementById('modalOverlay').addEventListener('click', closeModal);
+
+    async function loadAll() {
+      await Promise.all([loadStats(), loadOrders()]);
+    }
+
+    loadAll();
+  </script>
+</body>
+</html>

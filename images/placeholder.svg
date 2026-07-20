@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400" role="img" aria-label="Product image not available">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g)"/>
+  <g fill="none" stroke="#e94560" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="210" y="150" width="180" height="130" rx="12"/>
+    <circle cx="265" cy="205" r="26"/>
+    <path d="M285 250 l45 -45 35 30 25 -22"/>
+  </g>
+  <text x="300" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="26" font-weight="700" fill="#ffffff">DG Electronics</text>
+  <text x="300" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" fill="#9aa0b4">Image not available</text>
+</svg>

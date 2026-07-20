@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DG Electronics - Admin Dashboard</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin.css?v=2.2">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-card">
+            <div class="login-logo">
+                <svg viewBox="0 0 120 40" class="logo-svg">
+                    <text x="10" y="28" font-family="Poppins" font-weight="700" font-size="24" fill="#2563eb">DG</text>
+                    <text x="55" y="28" font-family="Poppins" font-weight="400" font-size="14" fill="#64748b">Electronics</text>
+                </svg>
+            </div>
+            <h1>Admin Login</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" name="email" required placeholder="admin@dgelectronics.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" name="password" required placeholder="Enter your password">
+                </div>
+                <div id="loginError" class="error-message" style="display: none;"></div>
+                <button type="submit" class="btn btn-primary btn-block">
+                    <span class="btn-text">Login</span>
+                    <span class="btn-spinner" style="display: none;">
+                        <svg class="spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"/></svg>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Layout -->
+    <div id="adminLayout" class="admin-layout" style="display: none;">
+        <!-- Sidebar Overlay -->
+        <div id="sidebarOverlay" class="sidebar-overlay"></div>
+        <!-- Sidebar -->
+        <aside id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <svg viewBox="0 0 120 40" class="logo-svg">
+                    <text x="10" y="28" font-family="Poppins" font-weight="700" font-size="24" fill="#2563eb">DG</text>
+                    <text x="55" y="28" font-family="Poppins" font-weight="400" font-size="14" fill="#94a3b8">Electronics</text>
+                </svg>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-link active" data-page="dashboard" aria-label="Dashboard">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-link" data-page="products" aria-label="Products">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                        <line x1="7" y1="7" x2="7.01" y2="7"/>
+                    </svg>
+                    <span>Products</span>
+                </a>
+                <a href="#" class="nav-link" data-page="categories" aria-label="Categories">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"/>
+                        <rect x="14" y="3" width="7" height="7"/>
+                        <rect x="14" y="14" width="7" height="7"/>
+                        <rect x="3" y="14" width="7" height="7"/>
+                    </svg>
+                    <span>Categories</span>
+                </a>
+                <a href="#" class="nav-link" data-page="brands" aria-label="Brands">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                        <line x1="7" y1="7" x2="7.01" y2="7"/>
+                        <line x1="12" y1="12" x2="12.01" y2="12"/>
+                    </svg>
+                    <span>Brands</span>
+                </a>
+                <a href="#" class="nav-link" data-page="customers" aria-label="Customers">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Customers</span>
+                </a>
+                <a href="#" class="nav-link" data-page="orders" aria-label="Orders">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                        <line x1="3" y1="6" x2="21" y2="6"/>
+                        <path d="M16 10a4 4 0 0 1-8 0"/>
+                    </svg>
+                    <span>Orders</span>
+                </a>
+                <a href="#" class="nav-link" data-page="inventory" aria-label="Inventory">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                        <line x1="12" y1="22.08" x2="12" y2="12"/>
+                    </svg>
+                    <span>Inventory</span>
+                </a>
+                <a href="#" class="nav-link" data-page="reports" aria-label="Reports">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"/>
+                        <line x1="12" y1="20" x2="12" y2="4"/>
+                        <line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <span>Reports</span>
+                </a>
+                <a href="#" class="nav-link" data-page="promotions" aria-label="Promotions">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    <span>Promotions</span>
+</a>
+<a href="#" class="nav-link" data-page="coupons" aria-label="Coupons">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/></svg>
+    <span>Coupons</span>
+</a>
+<a href="#" class="nav-link" data-page="newsletter" aria-label="Newsletter">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <span>Newsletter</span>
+</a>
+<a href="#" class="nav-link" data-page="analytics" aria-label="Analytics">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+    <span>Analytics</span>
+</a>
+<a href="#" class="nav-link" data-page="reviews" aria-label="Reviews">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    <span>Reviews</span>
+</a>
+<a href="#" class="nav-link" data-page="support-tickets" aria-label="Support Tickets">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    <span>Support Tickets</span>
+</a>
+<a href="#" class="nav-link" data-page="returns-admin" aria-label="Returns">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+    <span>Returns</span>
+</a>
+<a href="#" class="nav-link" data-page="live-chat" aria-label="Live Chat">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Live Chat</span>
+</a>
+                <a href="#" class="nav-link" data-page="settings" aria-label="Settings">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                    <span>Settings</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="btn btn-logout" aria-label="Logout">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                        <polyline points="16 17 21 12 16 7"/>
+                        <line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                    <span>Logout</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Navbar -->
+            <header id="topNav" class="top-nav">
+                <div class="nav-left">
+                    <button id="sidebarToggle" class="hamburger-btn" aria-label="Toggle sidebar">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="3" y1="12" x2="21" y2="12"/>
+                            <line x1="3" y1="6" x2="21" y2="6"/>
+                            <line x1="3" y1="18" x2="21" y2="18"/>
+                        </svg>
+                    </button>
+                    <div class="search-box">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        </svg>
+                        <input type="text" id="searchInput" placeholder="Search..." aria-label="Search">
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <div style="position:relative">
+                        <button id="notificationBtn" class="nav-icon-btn" aria-label="Notifications">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                            </svg>
+                            <span id="notificationBadge" class="notification-badge">0</span>
+                        </button>
+                        <div id="notificationDropdown" class="notification-dropdown" style="display:none">
+                            <div class="notification-dropdown-header">
+                                <h4>Notifications</h4>
+                                <button data-action="mark-all-notifications-read" class="mark-all-read-btn">Mark all read</button>
+                            </div>
+                            <div id="notificationList" class="notification-list"></div>
+                        </div>
+                    </div>
+                    <button id="darkModeToggle" class="nav-icon-btn" aria-label="Toggle dark mode">
+                        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="5"/>
+                            <line x1="12" y1="1" x2="12" y2="3"/>
+                            <line x1="12" y1="21" x2="12" y2="23"/>
+                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                            <line x1="1" y1="12" x2="3" y2="12"/>
+                            <line x1="21" y1="12" x2="23" y2="12"/>
+                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                        </svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </button>
+                    <div class="admin-info">
+                        <span id="adminName">Admin</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Wrapper -->
+            <div id="contentWrapper" class="content-wrapper">
+                <!-- Dashboard Page -->
+                <section id="page-dashboard" class="page active">
+                    <div class="page-header">
+                        <h1>Dashboard</h1>
+                        <p>Welcome back, Admin!</p>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon products-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                                    <line x1="7" y1="7" x2="7.01" y2="7"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="totalProducts">0</span>
+                                <span class="stat-label">Total Products</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon customers-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="totalCustomers">0</span>
+                                <span class="stat-label">Total Customers</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orders-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                                    <line x1="3" y1="6" x2="21" y2="6"/>
+                                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="totalOrders">0</span>
+                                <span class="stat-label">Total Orders</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon pending-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="pendingOrders">0</span>
+                                <span class="stat-label">Pending Orders</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon completed-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                                    <polyline points="22 4 12 14.01 9 11.01"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="completedOrders">0</span>
+                                <span class="stat-label">Completed Orders</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon outOfStock-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <line x1="15" y1="9" x2="9" y2="15"/>
+                                    <line x1="9" y1="9" x2="15" y2="15"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="outOfStock">0</span>
+                                <span class="stat-label">Out of Stock</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon revenue-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="1" x2="12" y2="23"/>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="totalRevenue">₦0</span>
+                                <span class="stat-label">Total Revenue</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon lowStock-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                                    <line x1="12" y1="9" x2="12" y2="13"/>
+                                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="lowStockAlerts">0</span>
+                                <span class="stat-label">Low Stock Alerts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="chart-card">
+                            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+                                <h3 style="margin:0">Sales Overview</h3>
+                                <select id="dashboardChartPeriod" class="form-select" style="max-width:150px">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                            <canvas id="salesChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <h3>Orders by Status</h3>
+                            <canvas id="orderStatusChart"></canvas>
+                        </div>
+                    </div>
+                        <div class="recent-orders-card">
+                            <h3>Recent Orders</h3>
+                            <div class="table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Order #</th>
+                                            <th>Customer</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="recentOrdersBody">
+                                        <tr>
+                                            <td colspan="5" class="no-data">No recent orders</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid" style="margin-top: 20px;">
+                        <div class="bestsellers-card">
+                            <h3>Best Selling Products</h3>
+                            <div id="bestSellersList" class="bestsellers-list">
+                                <p class="no-data">No sales data yet</p>
+                            </div>
+                        </div>
+                        <div class="low-stock-card">
+                            <h3>Low Stock Alerts</h3>
+                            <div id="lowStockList" class="low-stock-list">
+                                <p class="no-data">No low stock alerts</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Products Page -->
+                <section id="page-products" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h1>Products</h1>
+                        <div class="header-actions">
+                            <div class="search-box">
+                                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                </svg>
+                                <input type="text" id="productSearch" placeholder="Search products..." aria-label="Search products">
+                            </div>
+                            <button id="addProductBtn" class="btn btn-primary">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                                Add Product
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Image</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Price</th>
+                                    <th>Stock</th>
+                                    <th>Badge</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="productsTableBody">
+                                <tr>
+                                    <td colspan="7" class="no-data">No products found</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="productsPagination" class="pagination"></div>
+                </section>
+
+                <!-- Categories Page -->
+                <section id="page-categories" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h1>Categories</h1>
+                        <button class="btn btn-primary" data-action="show-add-category">Add Category</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Products</th>
+                                    <th>Brands</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categoriesTableBody">
+                                <tr><td colspan="4" class="no-data">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Brands Page -->
+                <section id="page-brands" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h1>Brands</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Brand</th>
+                                    <th>Products</th>
+                                    <th>Categories</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="brandsTableBody">
+                                <tr><td colspan="4" class="no-data">Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Customers Page -->
+                <section id="page-customers" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h1>Customers</h1>
+                        <div class="header-actions">
+                            <div class="search-box">
+                                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                </svg>
+                                <input type="text" id="customerSearch" placeholder="Search customers..." aria-label="Search customers">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Phone</th>
+                                    <th>Registered</th>
+                                    <th>Orders</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customersTableBody">
+                                <tr>
+                                    <td colspan="7" class="no-data">No customers found</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="customersPagination" class="pagination"></div>
+                </section>
+
+                <!-- Orders Page -->
+                <section id="page-orders" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h1>Orders</h1>
+                        <div class="header-actions">
+                            <div class="filter-tabs">
+                                <button class="filter-tab active" data-status="all">All</button>
+                                <button class="filter-tab" data-status="pending">Pending</button>
+                                <button class="filter-tab" data-status="confirmed">Confirmed</button>
+                                <button class="filter-tab" data-status="processing">Processing</button>
+                                <button class="filter-tab" data-status="shipped">Shipped</button>
+                                <button class="filter-tab" data-status="delivered">Delivered</button>
+                                <button class="filter-tab" data-status="cancelled">Cancelled</button>
+                            </div>
+                            <div style="display:flex;gap:8px;align-items:center">
+                                <button class="btn btn-secondary btn-sm" data-action="export-orders-csv" style="white-space:nowrap">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:4px;vertical-align:middle"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                                    Export CSV
+                                </button>
+                                <select id="paymentStatusFilter" class="form-select form-select-sm" data-action="load-orders" data-page="1" style="width:auto;padding:6px 10px;font-size:0.85rem">
+                                    <option value="">All Payments</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="paid">Paid</option>
+                                    <option value="failed">Failed</option>
+                                    <option value="refunded">Refunded</option>
+                                </select>
+                                <div class="search-box">
+                                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="11" cy="11" r="8"/>
+                                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                                    </svg>
+                                    <input type="text" id="orderSearch" placeholder="Search orders..." aria-label="Search orders">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Payment</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody">
+                                <tr>
+                                    <td colspan="8" class="no-data">No orders found</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="ordersPagination" class="pagination"></div>
+                </section>
+
+                <!-- Inventory Page -->
+                <section id="page-inventory" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h1>Inventory</h1>
+                    </div>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Category</th>
+                                    <th>Stock</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inventoryTableBody">
+                                <tr>
+                                    <td colspan="5" class="no-data">No inventory data</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Reports Page -->
+                <section id="page-reports" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h1>Reports</h1>
+                        <div class="header-actions">
+                            <select id="reportPeriod" class="form-select" aria-label="Report period">
+                                <option value="daily">Daily</option>
+                                <option value="weekly">Weekly</option>
+                                <option value="monthly" selected>Monthly</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon revenue-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="1" x2="12" y2="23"/>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="reportTotalSales">₦0</span>
+                                <span class="stat-label">Total Sales</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orders-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                                    <line x1="3" y1="6" x2="21" y2="6"/>
+                                    <path d="M16 10a4 4 0 0 1-8 0"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="reportTotalOrders">0</span>
+                                <span class="stat-label">Total Orders</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon customers-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                    <circle cx="9" cy="7" r="4"/>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                                </svg>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="reportAvgOrderValue">₦0</span>
+                                <span class="stat-label">Avg Order Value</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chart-card">
+                        <h3>Sales Report</h3>
+                        <canvas id="reportSalesChart"></canvas>
+                    </div>
+
+                    <div class="reports-grid">
+                        <div class="report-table-card">
+                            <h3>Top Selling Products</h3>
+                            <div class="table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Units Sold</th>
+                                            <th>Revenue</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="topProductsBody">
+                                        <tr>
+                                            <td colspan="3" class="no-data">No data available</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="report-table-card">
+                            <h3>Best Customers</h3>
+                            <div class="table-responsive">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Customer</th>
+                                            <th>Orders</th>
+                                            <th>Total Spent</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bestCustomersBody">
+                                        <tr>
+                                            <td colspan="3" class="no-data">No data available</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Page -->
+                <section id="page-settings" class="page" style="display: none;">
+                    <div class="page-header">
+                        <h1>Settings</h1>
+                    </div>
+                    
+                    <div class="settings-grid">
+                        <div class="settings-card">
+                            <h3>Store Settings</h3>
+                            <form id="storeSettingsForm">
+                                <div class="form-group">
+                                    <label for="storeName">Store Name</label>
+                                    <input type="text" id="storeName" name="storeName" placeholder="DG Electronics">
+                                </div>
+                                <div class="form-group">
+                                    <label for="storePhone">Phone</label>
+                                    <input type="tel" id="storePhone" name="storePhone" placeholder="+1 234 567 890">
+                                </div>
+                                <div class="form-group">
+                                    <label for="storeEmail">Email</label>
+                                    <input type="email" id="storeEmail" name="storeEmail" placeholder="contact@dgelectronics.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="storeAddress">Address</label>
+                                    <textarea id="storeAddress" name="storeAddress" rows="3" placeholder="123 Main St, City, Country"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="storeWhatsApp">WhatsApp</label>
+                                    <input type="tel" id="storeWhatsApp" name="storeWhatsApp" placeholder="+1 234 567 890">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>Social Media Links</h3>
+                            <form id="socialMediaForm">
+                                <div class="form-group">
+                                    <label for="facebookUrl">Facebook</label>
+                                    <input type="url" id="facebookUrl" name="facebookUrl" placeholder="https://facebook.com/yourpage">
+                                </div>
+                                <div class="form-group">
+                                    <label for="instagramUrl">Instagram</label>
+                                    <input type="url" id="instagramUrl" name="instagramUrl" placeholder="https://instagram.com/yourpage">
+                                </div>
+                                <div class="form-group">
+                                    <label for="twitterUrl">Twitter</label>
+                                    <input type="url" id="twitterUrl" name="twitterUrl" placeholder="https://twitter.com/yourpage">
+                                </div>
+                                <div class="form-group">
+                                    <label for="tiktokUrl">TikTok</label>
+                                    <input type="url" id="tiktokUrl" name="tiktokUrl" placeholder="https://tiktok.com/@yourpage">
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="settings-card">
+                            <h3>Delivery Settings</h3>
+                            <form id="deliverySettingsForm">
+                                <div class="form-group">
+                                    <label for="deliveryFee">Delivery Fee (₦)</label>
+                                    <input type="number" id="deliveryFee" name="deliveryFee" step="0.01" min="0" placeholder="5.99">
+                                </div>
+                                <div class="form-group">
+                                    <label for="freeDeliveryThreshold">Free Delivery Threshold (₦)</label>
+                                    <input type="number" id="freeDeliveryThreshold" name="freeDeliveryThreshold" step="0.01" min="0" placeholder="50.00">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="settings-actions">
+                        <button id="saveSettingsBtn" class="btn btn-primary">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                                <polyline points="17 21 17 13 7 13 7 21"/>
+                                <polyline points="7 3 7 8 15 8"/>
+                            </svg>
+                            Save Settings
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Promotions Page -->
+<div id="page-promotions" class="page" style="display: none;">
+    <div class="page-header"><h1>Promotions</h1><button class="btn btn-primary" data-action="show-create-promotion">+ New Promotion</button></div>
+    <div class="table-responsive"><table><thead><tr><th>Title</th><th>Type</th><th>Discount</th><th>Start</th><th>End</th><th>Status</th><th>Actions</th></tr></thead><tbody id="promotionsTableBody"><tr><td colspan="7" class="no-data">Loading...</td></tr></tbody></table></div>
+    <div id="promotionsPagination" class="pagination"></div>
+</div>
+
+<!-- Coupons Page -->
+<div id="page-coupons" class="page" style="display: none;">
+    <div class="page-header"><h1>Coupons</h1><button class="btn btn-primary" data-action="show-create-coupon">+ New Coupon</button></div>
+    <div class="table-responsive"><table><thead><tr><th>Code</th><th>Type</th><th>Value</th><th>Min Order</th><th>Usage</th><th>Valid</th><th>Status</th><th>Actions</th></tr></thead><tbody id="couponsTableBody"><tr><td colspan="8" class="no-data">Loading...</td></tr></tbody></table></div>
+    <div id="couponsPagination" class="pagination"></div>
+</div>
+
+<!-- Newsletter Page -->
+<div id="page-newsletter" class="page" style="display: none;">
+    <div class="page-header"><h1>Email Marketing</h1><button class="btn btn-primary" data-action="show-send-campaign">Send Campaign</button></div>
+    <div class="stats-grid" style="margin-bottom:20px"><div class="stat-card"><div class="stat-info"><span class="stat-label">Active Subscribers</span><span class="stat-value" id="newsletterCount">0</span></div></div></div>
+    <div class="table-responsive"><table><thead><tr><th>Email</th><th>Name</th><th>Subscribed</th><th>Joined</th><th>Actions</th></tr></thead><tbody id="newsletterTableBody"><tr><td colspan="5" class="no-data">Loading...</td></tr></tbody></table></div>
+    <div id="newsletterPagination" class="pagination"></div>
+</div>
+
+<!-- Analytics Page -->
+<div id="page-analytics" class="page" style="display: none;">
+    <div class="page-header"><h1>Analytics Dashboard</h1><select id="analyticsPeriod" class="form-select" data-action="load-analytics" style="width:auto"><option value="daily">Last 30 Days</option><option value="weekly">Last 7 Days</option><option value="yearly">Last Year</option></select></div>
+    <div class="stats-grid" style="margin-bottom:20px">
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Total Revenue</span><span class="stat-value" id="analyticsRevenue">₦0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Orders</span><span class="stat-value" id="analyticsOrders">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Avg Order Value</span><span class="stat-value" id="analyticsAOV">₦0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Conversion Rate</span><span class="stat-value" id="analyticsConversion">0%</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Product Views</span><span class="stat-value" id="analyticsViews">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Coupon Usage</span><span class="stat-value" id="analyticsCoupons">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Newsletter Signups</span><span class="stat-value" id="analyticsNewsletter">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Reviews</span><span class="stat-value" id="analyticsReviews">0</span></div></div>
+    </div>
+    <div class="chart-card"><h3>Revenue Over Time</h3><canvas id="revenueChart" height="250"></canvas></div>
+    <div class="chart-card" style="margin-top:20px"><h3>Top Selling Products</h3><div id="topProductsList"></div></div>
+</div>
+
+<!-- Reviews Page -->
+<div id="page-reviews" class="page" style="display: none;">
+    <div class="page-header"><h1>Review Management</h1></div>
+    <div class="stats-grid" style="margin-bottom:20px">
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Total Reviews</span><span class="stat-value" id="reviewsTotal">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Average Rating</span><span class="stat-value" id="reviewsAvg">0</span></div></div>
+    </div>
+    <div class="table-responsive"><table><thead><tr><th>Product</th><th>User</th><th>Rating</th><th>Comment</th><th>Date</th><th>Actions</th></tr></thead><tbody id="reviewsTableBody"><tr><td colspan="6" class="no-data">Loading...</td></tr></tbody></table></div>
+    <div id="reviewsPagination" class="pagination"></div>
+</div>
+
+<!-- Support Tickets Page -->
+<div id="page-support-tickets" class="page" style="display: none;">
+    <div class="page-header"><h1>Support Tickets</h1></div>
+    <div class="stats-grid" style="margin-bottom:20px">
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Open</span><span class="stat-value" id="ticketsOpen">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">In Progress</span><span class="stat-value" id="ticketsProgress">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Resolved</span><span class="stat-value" id="ticketsResolved">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Total</span><span class="stat-value" id="ticketsTotal">0</span></div></div>
+    </div>
+    <div class="table-responsive"><table><thead><tr><th>Ticket #</th><th>Customer</th><th>Subject</th><th>Category</th><th>Priority</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead><tbody id="ticketsTableBody"><tr><td colspan="8" class="no-data">Loading...</td></tr></tbody></table></div>
+    <div id="ticketsPagination" class="pagination"></div>
+</div>
+
+<!-- Ticket Detail Modal -->
+<div id="ticketModal" class="modal" style="display:none">
+    <div class="modal-overlay" data-action="close-ticket-modal"></div>
+    <div class="modal-content" style="max-width:700px">
+        <div class="modal-header"><h2 id="ticketModalTitle">Ticket Details</h2><button class="modal-close" data-action="close-ticket-modal">&times;</button></div>
+        <div class="modal-body" id="ticketModalBody"></div>
+        <div style="padding:15px 20px;border-top:1px solid rgba(212,175,55,0.08);display:flex;gap:10px">
+            <select id="ticketStatusSelect" style="padding:8px 12px;border:1px solid rgba(212,175,55,0.1);border-radius:8px;font-size:0.9rem;background:rgba(34,34,34,0.6);color:var(--text)"><option value="open">Open</option><option value="in_progress">In Progress</option><option value="waiting_customer">Waiting Customer</option><option value="resolved">Resolved</option><option value="closed">Closed</option></select>
+            <button class="btn btn-primary btn-sm" data-action="update-ticket-status">Update Status</button>
+        </div>
+        <div style="padding:0 20px 15px"><div style="display:flex;gap:8px"><input type="text" id="ticketReplyInput" placeholder="Type a reply..." style="flex:1;padding:8px 12px;border:1px solid rgba(212,175,55,0.1);border-radius:8px;background:rgba(34,34,34,0.6);color:var(--text)" /><button class="btn btn-primary btn-sm" data-action="reply-to-ticket">Reply</button></div></div>
+    </div>
+</div>
+
+<!-- Returns Page -->
+<div id="page-returns-admin" class="page" style="display: none;">
+    <div class="page-header"><h1>Return Requests</h1></div>
+    <div class="stats-grid" style="margin-bottom:20px">
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Pending</span><span class="stat-value" id="returnsPending">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Approved</span><span class="stat-value" id="returnsApproved">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Rejected</span><span class="stat-value" id="returnsRejected">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Total</span><span class="stat-value" id="returnsTotal">0</span></div></div>
+    </div>
+    <div class="table-responsive"><table><thead><tr><th>Request #</th><th>Order</th><th>Customer</th><th>Type</th><th>Reason</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead><tbody id="returnsTableBody"><tr><td colspan="8" class="no-data">Loading...</td></tr></tbody></table></div>
+    <div id="returnsPagination" class="pagination"></div>
+</div>
+
+<!-- Return Detail Modal -->
+<div id="returnModal" class="modal" style="display:none">
+    <div class="modal-overlay" data-action="close-return-modal"></div>
+    <div class="modal-content" style="max-width:600px">
+        <div class="modal-header"><h2 id="returnModalTitle">Return Details</h2><button class="modal-close" data-action="close-return-modal">&times;</button></div>
+        <div class="modal-body" id="returnModalBody"></div>
+        <div style="padding:0 20px 15px"><div class="form-group"><label>Admin Response</label><textarea id="returnAdminResponse" rows="3" placeholder="Enter response to customer..."></textarea></div><div style="display:flex;gap:8px"><button class="btn btn-primary btn-sm" data-action="update-return-status" data-status="approved">Approve</button><button class="btn btn-sm" style="background:linear-gradient(135deg,#f44336,#d32f2f);color:white" data-action="update-return-status" data-status="rejected">Reject</button></div></div>
+    </div>
+</div>
+
+<!-- Live Chat Page -->
+<div id="page-live-chat" class="page" style="display: none;">
+    <div class="page-header"><h1>Live Chat Management</h1></div>
+    <div class="stats-grid" style="margin-bottom:20px">
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Open Chats</span><span class="stat-value" id="chatsOpen">0</span></div></div>
+        <div class="stat-card"><div class="stat-info"><span class="stat-label">Closed Today</span><span class="stat-value" id="chatsClosed">0</span></div></div>
+    </div>
+    <div class="chat-admin-grid">
+        <div class="chat-admin-list" id="chatAdminList"><p style="color:var(--muted);padding:20px">Loading chats...</p></div>
+        <div class="chat-admin-view" id="chatAdminView"><p style="color:var(--muted);padding:40px;text-align:center">Select a chat to view messages</p></div>
+    </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="productModalTitle">Add Product</h2>
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <form id="productForm">
+                <div class="modal-body">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productName">Product Name *</label>
+                            <input type="text" id="productName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productSlug">Slug *</label>
+                            <input type="text" id="productSlug" name="slug" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productCategory">Category *</label>
+                            <select id="productCategory" name="category" class="form-select" required>
+                                <option value="">Select Category</option>
+                                <option value="phones">Phones</option>
+                                <option value="laptops">Laptops</option>
+                                <option value="tablets">Tablets</option>
+                                <option value="smartwatches">Smart Watches</option>
+                                <option value="headphones">Headphones</option>
+                                <option value="speakers">Speakers</option>
+                                <option value="gaming">Gaming</option>
+                                <option value="tvs">TVs</option>
+                                <option value="accessories">Accessories</option>
+                                <option value="networking">Networking</option>
+                                <option value="computer_components">Computer Components</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="productBrand">Brand *</label>
+                            <input type="text" id="productBrand" name="brand" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productPrice">Price (₦) *</label>
+                            <input type="number" id="productPrice" name="price" step="0.01" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productOldPrice">Old Price (₦)</label>
+                            <input type="number" id="productOldPrice" name="oldPrice" step="0.01" min="0">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDescription">Description *</label>
+                        <textarea id="productDescription" name="description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productStock">Stock *</label>
+                            <input type="number" id="productStock" name="stock" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productBadge">Badge</label>
+                            <select id="productBadge" name="badge" class="form-select">
+                                <option value="">No Badge</option>
+                                <option value="new">New</option>
+                                <option value="sale">Sale</option>
+                                <option value="hot">Hot</option>
+                                <option value="bestseller">Best Seller</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="productFeatured" name="featured">
+                                Featured Product
+                            </label>
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="productBestSeller" name="bestSeller">
+                                Best Seller
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Product Images</label>
+                        <div class="input-with-btn">
+                            <input type="url" id="productImage" name="image" placeholder="https://example.com/image.jpg">
+                            <button type="button" class="btn btn-secondary" id="uploadImageBtn">Upload</button>
+                        </div>
+                        <input type="file" id="imageFileInput" accept="image/*" multiple style="display:none">
+                        <div id="imageGallery" class="image-gallery" style="display:none;margin-top:10px"></div>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Specifications</h4>
+                        <div id="specificationsEditor" class="key-value-editor">
+                            <div class="editor-row">
+                                <input type="text" placeholder="Key" class="spec-key">
+                                <input type="text" placeholder="Value" class="spec-value">
+                                <button type="button" class="btn btn-icon remove-row" aria-label="Remove row">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"/>
+                                        <line x1="6" y1="6" x2="18" y2="18"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary add-row-btn" data-target="specificationsEditor">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                            Add Specification
+                        </button>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Colors</h4>
+                        <div id="colorsEditor" class="list-editor">
+                            <div class="editor-row">
+                                <input type="text" placeholder="Color name" class="color-input">
+                                <button type="button" class="btn btn-icon remove-row" aria-label="Remove row">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"/>
+                                        <line x1="6" y1="6" x2="18" y2="18"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary add-row-btn" data-target="colorsEditor">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                            Add Color
+                        </button>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Features</h4>
+                        <div id="featuresEditor" class="list-editor">
+                            <div class="editor-row">
+                                <input type="text" placeholder="Feature" class="feature-input">
+                                <button type="button" class="btn btn-icon remove-row" aria-label="Remove row">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"/>
+                                        <line x1="6" y1="6" x2="18" y2="18"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary add-row-btn" data-target="featuresEditor">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                            Add Feature
+                        </button>
+                    </div>
+
+                    <div class="form-section">
+                        <h4>Storage Options</h4>
+                        <div id="storageEditor" class="list-editor">
+                            <div class="editor-row">
+                                <input type="text" placeholder="Storage option" class="storage-input">
+                                <button type="button" class="btn btn-icon remove-row" aria-label="Remove row">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <line x1="18" y1="6" x2="6" y2="18"/>
+                                        <line x1="6" y1="6" x2="18" y2="18"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary add-row-btn" data-target="storageEditor">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"/>
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                            </svg>
+                            Add Storage Option
+                        </button>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="productWarranty">Warranty</label>
+                            <input type="text" id="productWarranty" name="warranty" placeholder="1 Year Limited Warranty">
+                        </div>
+                        <div class="form-group">
+                            <label for="productReturnPolicy">Return Policy</label>
+                            <input type="text" id="productReturnPolicy" name="returnPolicy" placeholder="30 Days Return">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="productDelivery">Estimated Delivery</label>
+                        <input type="text" id="productDelivery" name="estimatedDelivery" placeholder="3-5 Business Days">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary cancel-btn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <span class="btn-text">Save Product</span>
+                        <span class="btn-spinner" style="display: none;">
+                            <svg class="spinner" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none" stroke-dasharray="31.4 31.4" stroke-linecap="round"/></svg>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Customer Modal -->
+    <div id="customerModal" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Customer Order History</h2>
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="customer-info">
+                    <h3 id="customerModalName">Customer Name</h3>
+                    <p id="customerModalEmail">email@example.com</p>
+                    <p id="customerModalPhone">+1 234 567 890</p>
+                </div>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Order #</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Total</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customerOrdersBody">
+                            <tr>
+                                <td colspan="5" class="no-data">No orders found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary cancel-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div id="orderModal" class="modal" style="display: none;">
+        <div class="modal-overlay"></div>
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2>Order Details</h2>
+                <button class="modal-close" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="order-details-grid">
+                    <div class="order-info-section">
+                        <h4>Order Information</h4>
+                        <p><strong>Order #:</strong> <span id="orderDetailNumber"></span></p>
+                        <p><strong>Date:</strong> <span id="orderDetailDate"></span></p>
+                        <p><strong>Payment Status:</strong> <span id="orderDetailPaymentStatus"></span></p>
+                        <div class="payment-status-update" style="margin-top:6px;display:flex;gap:8px;align-items:center">
+                            <select id="orderPaymentStatusSelect" class="form-select" style="max-width:180px">
+                                <option value="pending">Pending</option>
+                                <option value="paid">Paid</option>
+                                <option value="failed">Failed</option>
+                                <option value="refunded">Refunded</option>
+                            </select>
+                            <input type="text" id="paymentRefInput" class="form-input" placeholder="Payment ref (optional)" style="max-width:180px">
+                            <button id="updatePaymentStatusBtn" class="btn btn-sm btn-primary">Update Payment</button>
+                        </div>
+                        <p><strong>Order Status:</strong> <span id="orderDetailStatus"></span></p>
+                        <p style="display:none"><strong>Tracking:</strong> <span id="orderDetailTracking" style="font-family:monospace;font-weight:600;color:var(--accent)"></span></p>
+                    </div>
+                    <div class="order-info-section">
+                        <h4>Customer Information</h4>
+                        <p><strong>Name:</strong> <span id="orderDetailCustomerName"></span></p>
+                        <p><strong>Email:</strong> <span id="orderDetailCustomerEmail"></span></p>
+                        <p><strong>Phone:</strong> <span id="orderDetailCustomerPhone"></span></p>
+                        <p><strong>Address:</strong> <span id="orderDetailAddress"></span></p>
+                    </div>
+                </div>
+                <div class="order-items-section">
+                    <h4>Order Items</h4>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orderItemsBody">
+                                <tr>
+                                    <td colspan="4" class="no-data">No items</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="order-summary">
+                        <p><strong>Subtotal:</strong> <span id="orderSubtotal">₦0</span></p>
+                        <p><strong>Delivery:</strong> <span id="orderDelivery">₦0</span></p>
+                        <p><strong>Total:</strong> <span id="orderTotal">₦0</span></p>
+                    </div>
+                </div>
+                <div class="order-status-update">
+                    <h4>Update Status</h4>
+                    <div class="admin-order-timeline" id="adminOrderTimeline"></div>
+                    <div class="status-update-form">
+                        <select id="orderStatusSelect" class="form-select">
+                            <option value="pending">Pending</option>
+                            <option value="processing">Processing</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="out_for_delivery">Out for Delivery</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                        <input type="text" id="orderStatusNote" class="form-input" placeholder="Add a note (optional)" style="flex:1">
+                        <button id="updateOrderStatusBtn" class="btn btn-primary">Update Status</button>
+                    </div>
+                    <div id="cancelRefundSection" style="display:none;margin-top:12px;padding:12px;background:rgba(244,67,54,0.08);border-radius:8px;border:1px solid rgba(244,67,54,0.15)">
+                        <p style="color:#f44336;font-weight:600;margin:0 0 8px">Cancel &amp; Refund</p>
+                        <p style="font-size:0.85rem;color:var(--muted);margin:0 0 8px">This will cancel the order, restore stock, and mark payment as refunded if applicable.</p>
+                        <button id="cancelRefundBtn" class="btn btn-danger btn-sm" data-action="admin-cancel-refund">Cancel Order &amp; Refund</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="printInvoiceBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 6 2 18 2 18 9"/>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                        <rect x="6" y="14" width="12" height="8"/>
+                    </svg>
+                    Print Invoice
+                </button>
+                <button type="button" class="btn btn-secondary cancel-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Promotion Modal -->
+<div id="promotionModal" class="modal" style="display:none">
+    <div class="modal-content" style="max-width:600px">
+        <div class="modal-header"><h2 id="promoModalTitle">New Promotion</h2><button class="modal-close" data-action="close-promotion-modal">&times;</button></div>
+        <div class="modal-body">
+            <input type="hidden" id="promoEditId">
+            <div class="form-group"><label>Title</label><input type="text" id="promoTitle" class="form-input" placeholder="e.g. Weekend Flash Sale"></div>
+            <div class="form-row"><div class="form-group"><label>Type</label><select id="promoType" class="form-select"><option value="flash_sale">Flash Sale</option><option value="daily_deal">Daily Deal</option><option value="weekly_deal">Weekly Deal</option><option value="holiday">Holiday</option><option value="clearance">Clearance</option><option value="bundle">Bundle</option><option value="custom">Custom</option></select></div>
+            <div class="form-group"><label>Discount</label><select id="promoDiscountType" class="form-select"><option value="percentage">Percentage (%)</option><option value="fixed">Fixed (₦)</option></select></div></div>
+            <div class="form-row"><div class="form-group"><label>Discount Value</label><input type="number" id="promoDiscountValue" class="form-input" placeholder="e.g. 20"></div>
+            <div class="form-group"><label>Coupon Code (optional)</label><input type="text" id="promoCouponCode" class="form-input" placeholder="e.g. FLASH20"></div></div>
+            <div class="form-row"><div class="form-group"><label>Start Date</label><input type="datetime-local" id="promoStartDate" class="form-input"></div>
+            <div class="form-group"><label>End Date</label><input type="datetime-local" id="promoEndDate" class="form-input"></div></div>
+            <div class="form-group"><label>Description</label><textarea id="promoDescription" class="form-input" rows="3" placeholder="Promotion description..."></textarea></div>
+            <div class="form-group"><label><input type="checkbox" id="promoActive" checked> Active</label> <label><input type="checkbox" id="promoFeatured"> Featured on Homepage</label></div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-secondary" data-action="close-promotion-modal">Cancel</button><button class="btn btn-primary" data-action="save-promotion">Save</button></div>
+    </div>
+</div>
+
+<!-- Coupon Modal -->
+<div id="couponModal" class="modal" style="display:none">
+    <div class="modal-content" style="max-width:600px">
+        <div class="modal-header"><h2 id="couponModalTitle">New Coupon</h2><button class="modal-close" data-action="close-coupon-modal">&times;</button></div>
+        <div class="modal-body">
+            <input type="hidden" id="couponEditId">
+            <div class="form-row"><div class="form-group"><label>Code</label><input type="text" id="couponCode" class="form-input" placeholder="e.g. SAVE20" style="text-transform:uppercase"></div>
+            <div class="form-group"><label>Type</label><select id="couponType" class="form-select"><option value="percentage">Percentage (%)</option><option value="fixed">Fixed (₦)</option><option value="free_shipping">Free Shipping</option><option value="bogo">BOGO</option></select></div></div>
+            <div class="form-row"><div class="form-group"><label>Value</label><input type="number" id="couponValue" class="form-input" placeholder="e.g. 20"></div>
+            <div class="form-group"><label>Min Order (₦)</label><input type="number" id="couponMinOrder" class="form-input" placeholder="0"></div></div>
+            <div class="form-row"><div class="form-group"><label>Max Discount (₦)</label><input type="number" id="couponMaxDiscount" class="form-input" placeholder="0 = no limit"></div>
+            <div class="form-group"><label>Usage Limit</label><input type="number" id="couponUsageLimit" class="form-input" placeholder="0 = unlimited"></div></div>
+            <div class="form-row"><div class="form-group"><label>Start Date</label><input type="datetime-local" id="couponStartDate" class="form-input"></div>
+            <div class="form-group"><label>End Date</label><input type="datetime-local" id="couponEndDate" class="form-input"></div></div>
+            <div class="form-group"><label>Description</label><input type="text" id="couponDescription" class="form-input" placeholder="e.g. 10% off your first order"></div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-secondary" data-action="close-coupon-modal">Cancel</button><button class="btn btn-primary" data-action="save-coupon">Save</button></div>
+    </div>
+</div>
+
+<!-- Campaign Modal -->
+<div id="campaignModal" class="modal" style="display:none">
+    <div class="modal-content" style="max-width:600px">
+        <div class="modal-header"><h2>Send Email Campaign</h2><button class="modal-close" data-action="close-campaign-modal">&times;</button></div>
+        <div class="modal-body">
+            <div class="form-group"><label>Subject</label><input type="text" id="campaignSubject" class="form-input" placeholder="e.g. Weekend Flash Sale - 20% Off!"></div>
+            <div class="form-group"><label>HTML Content</label><textarea id="campaignContent" class="form-input" rows="10" placeholder="<h1>Hello!</h1><p>We have exciting deals...</p>"></textarea></div>
+        </div>
+        <div class="modal-footer"><button class="btn btn-secondary" data-action="close-campaign-modal">Cancel</button><button class="btn btn-primary" data-action="send-campaign">Send to All Subscribers</button></div>
+    </div>
+</div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" style="display: none;">
+        <div class="toast-content">
+            <span id="toastMessage"></span>
+        </div>
+        <button class="toast-close" aria-label="Close notification">&times;</button>
+    </div>
+
+    <script src="/js/admin.js"></script>
+    <script src="/js/chat-widget.js"></script>
+</body>
+</html>

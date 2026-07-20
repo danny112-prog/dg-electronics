@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DG Electronics | Premium Gadgets Store – Phones, Laptops & Accessories</title>
+  <meta name="description" content="DG Electronics is Nigeria's trusted destination for premium phones, laptops, and accessories. Shop the latest tech at unbeatable prices with fast delivery." />
+  <meta name="keywords" content="electronics, phones, laptops, accessories, smartphones, gadgets, DG Electronics, Nigeria, buy phones online" />
+  <meta name="author" content="DG Electronics" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:title" content="DG Electronics | Premium Gadgets Store" />
+  <meta property="og:description" content="Nigeria's trusted destination for premium phones, laptops, and accessories." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.dgelectronics.com" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&h=630&fit=crop" />
+  <meta property="og:site_name" content="DG Electronics" />
+  <meta property="og:locale" content="en_NG" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DG Electronics | Premium Gadgets Store" />
+  <meta name="twitter:description" content="Nigeria's trusted destination for premium phones, laptops, and accessories." />
+  <meta name="twitter:image" content="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=1200&h=630&fit=crop" />
+  <link rel="canonical" href="https://www.dgelectronics.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/css/style.css?v=3.0" as="style" />
+  <link rel="preload" href="/js/app.js" as="script" />
+  <link rel="stylesheet" href="/css/style.css?v=3.0" />
+  <script src="/js/index-page.js"></script>
+</head>
+<body>
+  <a href="#home" class="skip-link">Skip to main content</a>
+  <div class="loader" id="loader">
+    <div class="loader-inner">
+      <div class="loader-spinner"></div>
+      <p>DG Electronics</p>
+    </div>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <a class="brand" href="/" aria-label="DG Electronics Home">
+      <img src="/images/logo.svg" alt="DG Electronics logo" width="40" height="40" decoding="async" />
+      <span>DG Electronics</span>
+    </a>
+    <div class="nav-search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="navSearch" placeholder="Search phones, laptops, accessories..." aria-label="Search products" />
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/#products">Products</a>
+      <a href="/track">Track Order</a>
+      <a href="/#about">About</a>
+      <a href="/#contact">Contact</a>
+      <div class="nav-user" id="navUser">
+        <button class="nav-user-btn" id="userMenuBtn" aria-label="Account menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <span id="userName">Account</span>
+        </button>
+        <div class="user-dropdown" id="userDropdown">
+          <a href="/login" id="loginLink">Login</a>
+          <a href="/signup" id="signupLink">Sign Up</a>
+          <a href="/account" id="accountLink" style="display:none">My Account</a>
+          <a href="/admin" id="adminLink" style="display:none">Admin Panel</a>
+          <button id="logoutBtn" style="display:none">Logout</button>
+        </div>
+      </div>
+      <button class="cart-btn" id="cartButton" aria-label="View cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="home">
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+      <div class="hero-content reveal">
+        <span class="hero-badge">★ Premium Quality Guarantee</span>
+        <h1>Premium Electronics for <span class="text-gradient">Work, Gaming & Everyday Life</span></h1>
+        <p class="hero-subtitle">Discover top-tier smartphones, laptops, and accessories — backed by genuine warranties, fast nationwide delivery, and dedicated support.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#products">Shop Now</a>
+          <a class="btn btn-secondary" href="#products">Explore Deals</a>
+        </div>
+        <div class="hero-stats">
+          <div class="reveal"><strong>10k+</strong><span>Happy Customers</span></div>
+          <div class="reveal"><strong>24/7</strong><span>Support</span></div>
+          <div class="reveal"><strong>100%</strong><span>Genuine Products</span></div>
+        </div>
+      </div>
+      <div class="hero-visual reveal">
+        <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800&h=600&fit=crop" alt="Modern electronics showcase" width="800" height="600" loading="eager" decoding="async" />
+      </div>
+    </section>
+
+    <!-- Flash Sale Section -->
+    <section id="flashSaleSection" class="flash-sale-section" style="display:none">
+      <div class="container">
+        <div class="flash-sale-header">
+          <div>
+            <h2 id="flashSaleTitle" class="section-title">Flash Sale</h2>
+            <p id="flashSaleDesc" class="section-subtitle"></p>
+          </div>
+          <div id="flashSaleTimer" class="flash-sale-timer"></div>
+        </div>
+        <div id="flashSaleGrid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- Active Promotions Banner -->
+    <div id="activePromosBanner" class="active-promos-banner" style="display:none"></div>
+
+    <!-- Products Section -->
+    <section id="products" class="section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Featured Products</p>
+        <h2>Top picks for every tech lover</h2>
+      </div>
+      <div class="products-layout">
+        <!-- Filter Sidebar -->
+        <div class="filter-overlay" id="filterOverlay"></div>
+        <aside class="filter-sidebar" id="filterSidebar">
+          <div class="filter-header"><h3>Filters</h3><button class="filter-close" id="filterClose">&times;</button></div>
+          <div class="filter-body">
+            <div class="filter-group"><h4>Categories</h4>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="" checked data-action="filter-category" data-category="" /><span>All Categories</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="phones" data-action="filter-category" data-category="phones" /><span>Smartphones</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="laptops" data-action="filter-category" data-category="laptops" /><span>Laptops</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="tablets" data-action="filter-category" data-category="tablets" /><span>Tablets</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="smartwatches" data-action="filter-category" data-category="smartwatches" /><span>Smartwatches</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="headphones" data-action="filter-category" data-category="headphones" /><span>Headphones</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="speakers" data-action="filter-category" data-category="speakers" /><span>Speakers</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="gaming" data-action="filter-category" data-category="gaming" /><span>Gaming</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="tvs" data-action="filter-category" data-category="tvs" /><span>TVs</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="accessories" data-action="filter-category" data-category="accessories" /><span>Accessories</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="networking" data-action="filter-category" data-category="networking" /><span>Networking</span></label>
+              <label class="filter-option"><input type="radio" name="filterCat" class="filter-radio" value="computer_components" data-action="filter-category" data-category="computer_components" /><span>Computer Components</span></label>
+            </div>
+            <div class="filter-group"><h4>Brand</h4><div id="brandFilters"></div></div>
+            <div class="filter-group"><h4>Price Range (&#8358;)</h4>
+              <div class="filter-price-row"><input type="number" id="filterMinPrice" placeholder="Min" class="filter-input" /><span>&mdash;</span><input type="number" id="filterMaxPrice" placeholder="Max" class="filter-input" /></div>
+              <button class="btn btn-primary btn-sm" id="filterPriceApply" style="width:100%;margin-top:0.5rem">Apply Price</button>
+            </div>
+            <div class="filter-group"><h4>Rating</h4>
+              <label class="filter-option"><input type="radio" name="filterRating" class="filter-radio filter-rating" value="4" /><span>&#9733;&#9733;&#9733;&#9733; & Up</span></label>
+              <label class="filter-option"><input type="radio" name="filterRating" class="filter-radio filter-rating" value="3" /><span>&#9733;&#9733;&#9733; & Up</span></label>
+              <label class="filter-option"><input type="radio" name="filterRating" class="filter-radio filter-rating" value="2" /><span>&#9733;&#9733; & Up</span></label>
+              <label class="filter-option"><input type="radio" name="filterRating" class="filter-radio filter-rating" value="0" checked /><span>All Ratings</span></label>
+            </div>
+            <div class="filter-group"><h4>Availability</h4>
+              <label class="filter-option"><input type="checkbox" id="filterInStock" class="filter-checkbox" /><span>In Stock Only</span></label>
+            </div>
+            <div class="filter-group"><h4>Special</h4>
+              <label class="filter-option"><input type="checkbox" id="filterOnSale" class="filter-checkbox" /><span>On Sale</span></label>
+              <label class="filter-option"><input type="checkbox" id="filterNewArrivals" class="filter-checkbox" /><span>New Arrivals</span></label>
+              <label class="filter-option"><input type="checkbox" id="filterBestSellers" class="filter-checkbox" /><span>Best Sellers</span></label>
+              <label class="filter-option"><input type="checkbox" id="filterFeatured" class="filter-checkbox" /><span>Featured</span></label>
+            </div>
+          </div>
+          <div class="filter-footer"><button class="btn btn-secondary btn-sm" id="clearFilters" style="width:100%">Clear All Filters</button></div>
+        </aside>
+
+        <div class="products-main">
+          <div class="products-toolbar reveal">
+            <div class="toolbar-left">
+              <button class="filter-toggle-btn" id="filterToggle" aria-label="Toggle filters">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>
+                Filters <span class="filter-count" id="activeFilterCount"></span>
+              </button>
+              <div class="category-tabs" role="tablist">
+                <button class="tab active" data-category="all" role="tab">All</button>
+                <button class="tab" data-category="phones" role="tab">Phones</button>
+                <button class="tab" data-category="laptops" role="tab">Laptops</button>
+                <button class="tab" data-category="tablets" role="tab">Tablets</button>
+                <button class="tab" data-category="accessories" role="tab">Accessories</button>
+                <button class="tab" data-category="gaming" role="tab">Gaming</button>
+                <button class="tab" data-category="tvs" role="tab">TVs</button>
+              </div>
+            </div>
+            <div class="toolbar-right">
+              <select id="sortSelect" aria-label="Sort products">
+                <option value="newest">Newest</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="popularity">Most Popular</option>
+                <option value="rating">Highest Rated</option>
+                <option value="best-selling">Best Selling</option>
+                <option value="featured">Featured</option>
+                <option value="name-az">Name: A to Z</option>
+                <option value="name-za">Name: Z to A</option>
+              </select>
+            </div>
+          </div>
+          <div class="product-grid" id="productGrid" role="list"></div>
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
+
+      <!-- Compare Bar -->
+      <div class="compare-bar" id="compareBar" style="display:none"></div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="homepage-section">
+      <div class="container">
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-subtitle">Hand-picked products just for you</p>
+        <div id="featuredGrid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- New Arrivals -->
+    <section class="homepage-section">
+      <div class="container">
+        <h2 class="section-title">New Arrivals</h2>
+        <p class="section-subtitle">The latest additions to our collection</p>
+        <div id="newArrivalsGrid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="homepage-section">
+      <div class="container">
+        <h2 class="section-title">Best Sellers</h2>
+        <p class="section-subtitle">Most popular products loved by our customers</p>
+        <div id="bestSellersGrid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- Trending Products -->
+    <section class="homepage-section">
+      <div class="container">
+        <h2 class="section-title">Trending Now</h2>
+        <p class="section-subtitle">What everyone is talking about</p>
+        <div id="trendingGrid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- Recommended Products -->
+    <section class="homepage-section">
+      <div class="container">
+        <h2 class="section-title">Recommended for You</h2>
+        <p class="section-subtitle">Based on ratings and reviews</p>
+        <div id="recommendedGrid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="section bestsellers-section" aria-labelledby="best-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Best Sellers</p>
+        <h2 id="best-heading">Our most loved products</h2>
+      </div>
+      <div class="product-grid" id="bestSellersGridAlt"></div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section category-section" aria-labelledby="cat-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Shop by Category</p>
+        <h2 id="cat-heading">Find the perfect gadget for every need</h2>
+      </div>
+      <div class="category-grid">
+        <a href="/#products" class="category-card reveal" data-filter="phones">
+          <div class="category-icon">📱</div>
+          <h3>Phones</h3>
+          <p>Premium smartphones from top brands.</p>
+        </a>
+        <a href="/#products" class="category-card reveal" data-filter="laptops">
+          <div class="category-icon">💻</div>
+          <h3>Laptops</h3>
+          <p>Powerful laptops for work and play.</p>
+        </a>
+        <a href="/#products" class="category-card reveal" data-filter="accessories">
+          <div class="category-icon">🎧</div>
+          <h3>Accessories</h3>
+          <p>Earbuds, chargers, smartwatches, and more.</p>
+        </a>
+        <a href="/#products" class="category-card reveal" data-filter="consoles">
+          <div class="category-icon">🎮</div>
+          <h3>Consoles</h3>
+          <p>PlayStation, Xbox, Nintendo gaming consoles.</p>
+        </a>
+        <a href="/#products" class="category-card reveal" data-filter="tvs">
+          <div class="category-icon">📺</div>
+          <h3>TVs</h3>
+          <p>Smart TVs with stunning picture quality.</p>
+        </a>
+        <a href="/#products" class="category-card reveal" data-filter="gaming">
+          <div class="category-icon">🕹️</div>
+          <h3>Gaming</h3>
+          <p>Keyboards, mice, headsets, and controllers.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about-section" aria-labelledby="about-heading">
+      <div class="about-grid">
+        <div class="about-content reveal">
+          <p class="eyebrow">About Us</p>
+          <h2 id="about-heading">Your one-stop gadget destination</h2>
+          <p>Founded in 2020, DG Electronics has grown from a small tech shop into a trusted online destination for premium gadgets. We partner directly with leading brands to bring you authentic products at competitive prices across Nigeria.</p>
+          <p>Our mission is simple: make quality technology accessible to everyone. Whether you're upgrading your phone, finding the perfect laptop, or picking up accessories, we've got you covered.</p>
+          <a class="btn btn-primary" href="/#contact">Get in Touch</a>
+        </div>
+        <div class="about-visual reveal">
+          <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&h=400&fit=crop" alt="Our store" width="600" height="400" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section why-section" aria-labelledby="why-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Why Choose Us</p>
+        <h2 id="why-heading">Reliable tech, delivered with care</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal"><div class="why-icon">✅</div><h3>Genuine Products</h3><p>Every device sourced from trusted brands with warranty.</p></div>
+        <div class="why-card reveal"><div class="why-icon">🚚</div><h3>Fast Delivery</h3><p>Speedy shipping with real-time tracking nationwide.</p></div>
+        <div class="why-card reveal"><div class="why-icon">💰</div><h3>Best Prices</h3><p>Premium gear at competitive prices, guaranteed.</p></div>
+        <div class="why-card reveal"><div class="why-icon">🛡️</div><h3>2-Year Warranty</h3><p>Extended warranty on all premium devices.</p></div>
+        <div class="why-card reveal"><div class="why-icon">🔄</div><h3>Easy Returns</h3><p>30-day hassle-free returns policy.</p></div>
+        <div class="why-card reveal"><div class="why-icon">💬</div><h3>Expert Support</h3><p>24/7 customer support via chat, phone, WhatsApp.</p></div>
+      </div>
+    </section>
+
+    <!-- Offers -->
+    <section class="section offer-section" aria-labelledby="offer-heading">
+      <div class="offer-banner reveal">
+        <div>
+          <p class="eyebrow">Special Offers</p>
+          <h2 id="offer-heading">Enjoy up to 25% off selected gadgets this week.</h2>
+          <p>Limited-time savings on phones, laptops, and accessories for early shoppers.</p>
+        </div>
+        <a class="btn btn-primary" href="/#products">Shop Deals</a>
+      </div>
+      <div class="offer-grid">
+        <article class="offer-card reveal"><h3>Free Express Delivery</h3><p>On orders above ₦500,000.</p></article>
+        <article class="offer-card reveal"><h3>Trade-In Bonus</h3><p>Get extra credit on your old device.</p></article>
+        <article class="offer-card reveal"><h3>Extended Warranty</h3><p>Enjoy 2 years on premium devices.</p></article>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section id="reviews" class="section reviews-section" aria-labelledby="reviews-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Customer Reviews</p>
+        <h2 id="reviews-heading">What our customers say</h2>
+      </div>
+      <div class="review-grid">
+        <article class="review-card reveal">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>"The service was fast and the products were exactly as described. Highly recommend!"</p>
+          <div class="review-author"><div class="review-avatar" aria-hidden="true">S</div><strong>Sarah M.</strong></div>
+        </article>
+        <article class="review-card reveal">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>"Amazing quality and support. I recommend DG Electronics to everyone."</p>
+          <div class="review-author"><div class="review-avatar" aria-hidden="true">D</div><strong>David R.</strong></div>
+        </article>
+        <article class="review-card reveal">
+          <div class="review-stars" aria-label="5 out of 5 stars">★★★★★</div>
+          <p>"Best prices I've found online. The iPhone I bought was brand new and well-packed."</p>
+          <div class="review-author"><div class="review-avatar" aria-hidden="true">A</div><strong>Amina K.</strong></div>
+        </article>
+        <article class="review-card reveal">
+          <div class="review-stars" aria-label="4 out of 5 stars">★★★★☆</div>
+          <p>"Great experience overall. Delivery was a bit delayed but product quality was perfect."</p>
+          <div class="review-author"><div class="review-avatar" aria-hidden="true">J</div><strong>James T.</strong></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section faq-section" aria-labelledby="faq-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-heading">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal"><summary>Are all products genuine?</summary><p>Yes! We source all products directly from authorized distributors and brands. Every item comes with a manufacturer warranty.</p></details>
+        <details class="faq-item reveal"><summary>How long does delivery take?</summary><p>Standard delivery takes 3-5 business days nationwide. Express delivery (available on orders above ₦500,000) arrives within 1-2 business days.</p></details>
+        <details class="faq-item reveal"><summary>What is your return policy?</summary><p>We offer a 30-day hassle-free return policy. If you're not satisfied, simply initiate a return through your account or contact our support team.</p></details>
+        <details class="faq-item reveal"><summary>Do you offer warranty on products?</summary><p>Yes, all products come with a standard 1-year manufacturer warranty. Premium devices include an extended 2-year warranty.</p></details>
+        <details class="faq-item reveal"><summary>How can I track my order?</summary><p>Once your order is shipped, you'll receive a tracking number via email and SMS. You can also track your order from your account dashboard.</p></details>
+      </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section newsletter-section" aria-labelledby="newsletter-heading">
+      <div class="newsletter-card reveal">
+        <div class="newsletter-content">
+          <p class="eyebrow">Newsletter</p>
+          <h2 id="newsletter-heading">Stay in the loop</h2>
+          <p>Subscribe for exclusive deals, new arrivals, and tech tips delivered to your inbox.</p>
+        </div>
+        <form class="newsletter-form" id="newsletterForm" aria-label="Newsletter signup">
+          <input type="email" placeholder="Enter your email" required aria-label="Email address" />
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section contact-section" aria-labelledby="contact-heading">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Contact Us</p>
+        <h2 id="contact-heading">Let's connect</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item reveal"><div class="contact-icon">📞</div><h3>Phone</h3><p><a href="tel:+2349031355560">+234 (903) 135-5560</a></p></div>
+        <div class="contact-item reveal"><div class="contact-icon">📧</div><h3>Email</h3><p><a href="mailto:danielokolie764@gmail.com">danielokolie764@gmail.com</a></p></div>
+        <div class="contact-item reveal"><div class="contact-icon">💬</div><h3>WhatsApp</h3><p><a href="https://wa.me/2349031355560" target="_blank" rel="noopener noreferrer">+234 (903) 135-5560</a></p></div>
+        <div class="contact-item reveal"><div class="contact-icon">📍</div><h3>Location</h3><p>No 78 Market Road, Oyigbo, Rivers State</p></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
+  <aside class="cart-sidebar" id="cartSidebar" aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-header"><h3>Your Cart</h3><button class="cart-close" id="cartClose" aria-label="Close cart">&times;</button></div>
+    <div class="cart-items" id="cartItems"><p class="cart-empty">Your cart is empty</p></div>
+    <div class="cart-footer">
+      <div class="cart-summary">
+        <div class="cart-summary-row"><span>Subtotal</span><span id="cartSubtotal">₦0</span></div>
+        <div class="cart-summary-row"><span>Delivery</span><span id="cartDelivery">₦2,000</span></div>
+        <div class="cart-summary-row total"><span>Total</span><span id="cartTotal">₦0</span></div>
+      </div>
+      <button class="btn btn-primary checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+  </aside>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true"></div>
+  <div class="modal" id="productModal" role="dialog" aria-label="Product details" aria-hidden="true">
+    <button class="modal-close" id="modalClose" aria-label="Close modal">&times;</button>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a class="footer-brand" href="/"><img src="/images/logo.svg" alt="DG Electronics" width="36" height="36" decoding="async" /><span>DG Electronics</span></a>
+        <p>Your trusted destination for premium phones, laptops, and accessories across Nigeria.</p>
+        <div class="social-links">
+          <a href="https://wa.me/2349031355560" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+          <a href="https://facebook.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+          <a href="https://instagram.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="https://tiktok.com/@yourprofile" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.48V13.2a8.19 8.19 0 005.58 2.16v-3.44a4.85 4.85 0 01-2.35-.63V6.69h2.35z"/></svg></a>
+          <a href="https://x.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="https://youtube.com/@yourprofile" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="/">Home</a></li><li><a href="/#products">Products</a></li><li><a href="/#about">About Us</a></li><li><a href="/#contact">Contact</a></li><li><a href="/#faq">FAQ</a></li></ul></div>
+      <div class="footer-col"><h4>Categories</h4><ul><li><a href="/#products">Phones</a></li><li><a href="/#products">Laptops</a></li><li><a href="/#products">Accessories</a></li><li><a href="/#products">Consoles</a></li><li><a href="/#products">TVs</a></li><li><a href="/#products">Gaming</a></li></ul></div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <ul class="footer-contact">
+          <li>📍 No 78 Market Road, Oyigbo, Rivers State</li>
+          <li>📞 <a href="tel:+2349031355560">+234 (903) 135-5560</a></li>
+          <li>📧 <a href="mailto:danielokolie764@gmail.com">danielokolie764@gmail.com</a></li>
+          <li>🕐 Mon - Sat: 9:00 AM - 8:00 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> DG Electronics. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="javascript:void(0)" title="Coming soon">Privacy Policy</a><a href="javascript:void(0)" title="Coming soon">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <!-- Floating Buttons -->
+  <a href="https://wa.me/2349031355560" class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "DG Electronics",
+    "description": "Premium phones, laptops, and accessories with genuine products and fast delivery.",
+    "url": "https://www.dgelectronics.com",
+    "telephone": "+234-903-135-5560",
+    "email": "danielokolie764@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "No 78 Market Road",
+      "addressLocality": "Oyigbo",
+      "addressRegion": "Rivers State",
+      "addressCountry": "NG"
+    },
+    "sameAs": [
+      "https://facebook.com/yourprofile",
+      "https://instagram.com/yourprofile",
+      "https://x.com/yourprofile",
+      "https://youtube.com/@yourprofile",
+      "https://tiktok.com/@yourprofile"
+    ]
+  }
+  </script>
+
+  <script src="/js/app.js"></script>
+  <script src="/js/chat-widget.js"></script>
+</body>
+</html>

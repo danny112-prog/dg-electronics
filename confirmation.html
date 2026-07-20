@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed | DG Electronics</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .confirmation-page { max-width: 700px; margin: 3rem auto; padding: 0 5%; text-align: center; }
+    .success-icon { width: 80px; height: 80px; background: #00c853; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; animation: popIn 0.5s ease; }
+    .success-icon svg { color: #fff; }
+    @keyframes popIn { 0% { transform: scale(0); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
+    .confirmation-card { background: var(--white); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--shadow); margin-top: 1.5rem; text-align: left; }
+    .confirmation-card h2 { color: var(--primary-dark); margin-bottom: 0.5rem; }
+    .order-id { color: var(--accent); font-size: 1.1rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .order-details-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 1.5rem 0; }
+    .detail-group h4 { color: var(--primary-dark); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+    .detail-group p { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+    .order-items-list { margin: 1.5rem 0; padding: 1rem 0; border-top: 1px solid #f0f3f9; border-bottom: 1px solid #f0f3f9; }
+    .order-item-row { display: flex; justify-content: space-between; padding: 0.5rem 0; font-size: 0.95rem; }
+    .order-item-row span:first-child { color: var(--text); }
+    .order-item-row span:last-child { color: var(--accent); font-weight: 600; }
+    .total-row { display: flex; justify-content: space-between; padding: 0.8rem 0; font-weight: 700; font-size: 1.1rem; color: var(--primary-dark); border-top: 2px solid #f0f3f9; margin-top: 0.5rem; }
+    .total-row span:last-child { color: var(--accent); }
+    .continue-btn { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2rem; padding: 0.85rem 2rem; background: var(--accent); color: #fff; border: none; border-radius: 999px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: all 0.3s; text-decoration: none; }
+    .continue-btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: var(--shadow); }
+    @media (max-width: 600px) { .order-details-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a class="brand" href="index.html">
+      <img src="images/logo.svg" alt="DG Electronics logo" width="42" height="42" />
+      <span>DG Electronics</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+    </nav>
+  </header>
+
+  <main class="confirmation-page">
+    <div class="success-icon">
+      <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1 style="color: var(--primary-dark);">Order Confirmed!</h1>
+    <p style="color: var(--muted); margin-top: 0.5rem;">Thank you for your purchase. Your order has been received.</p>
+
+    <div class="confirmation-card">
+      <h2>Order Details</h2>
+      <p class="order-id" id="orderId">Order #---</p>
+
+      <div class="order-details-grid">
+        <div class="detail-group">
+          <h4>Customer</h4>
+          <p id="customerName">---</p>
+        </div>
+        <div class="detail-group">
+          <h4>Email</h4>
+          <p id="customerEmail">---</p>
+        </div>
+        <div class="detail-group">
+          <h4>Phone</h4>
+          <p id="customerPhone">---</p>
+        </div>
+        <div class="detail-group">
+          <h4>Delivery Address</h4>
+          <p id="deliveryAddress">---</p>
+        </div>
+      </div>
+
+      <div class="order-items-list" id="orderItems"></div>
+
+      <div class="total-row">
+        <span>Total Paid</span>
+        <span id="totalPaid">₦0</span>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="index.html" class="continue-btn">Continue Shopping</a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const orderId = params.get('order_id');
+
+    if (orderId) {
+      fetch(`/api/orders/${orderId}`)
+        .then(res => res.json())
+        .then(order => {
+          document.getElementById('orderId').textContent = `Order #${order.id}`;
+          document.getElementById('customerName').textContent = order.customer_name;
+          document.getElementById('customerEmail').textContent = order.customer_email;
+          document.getElementById('customerPhone').textContent = order.customer_phone;
+          document.getElementById('deliveryAddress').textContent = order.delivery_address;
+          document.getElementById('totalPaid').textContent = `₦${order.total.toLocaleString()}`;
+
+          const itemsEl = document.getElementById('orderItems');
+          itemsEl.innerHTML = order.items.map(item => `
+            <div class="order-item-row">
+              <span>${item.product_name} × ${item.quantity}</span>
+              <span>₦${(item.product_price * item.quantity).toLocaleString()}</span>
+            </div>
+          `).join('');
+        })
+        .catch(() => {
+          document.getElementById('orderId').textContent = 'Order not found';
+        });
+    }
+  </script>
+</body>
+</html>

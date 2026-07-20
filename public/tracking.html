@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Order - DG Electronics</title>
+  <meta name="description" content="Track your DG Electronics order status in real time." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css?v=3.0" />
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div class="loader" id="loader"><div class="loader-inner"><div class="loader-spinner"></div><p>DG Electronics</p></div></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="navbar" id="navbar">
+    <a class="brand" href="/" aria-label="DG Electronics Home">
+      <img src="/images/logo.svg" alt="DG Electronics logo" width="40" height="40" decoding="async" />
+      <span>DG Electronics</span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-links" id="navLinks" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/#products">Products</a>
+      <a href="/track" class="active">Track Order</a>
+      <a href="/account">Account</a>
+    </nav>
+  </header>
+
+  <main class="tracking-page" id="main-content">
+    <div class="tracking-container">
+      <div class="tracking-header">
+        <h1>Track Your Order</h1>
+        <p>Enter your tracking number or order details to see real-time status</p>
+      </div>
+
+      <div class="tracking-form-card">
+        <div class="tracking-tabs">
+          <button class="tracking-tab active" data-tab="tracking" data-action="switch-tracking-tab" data-tracking-tab="tracking">Track by Tracking Number</button>
+          <button class="tracking-tab" data-tab="order" data-action="switch-tracking-tab" data-tracking-tab="order">Track by Order Number</button>
+        </div>
+
+        <div id="tabTracking" class="tracking-tab-content active">
+          <div class="tracking-input-group">
+            <input type="text" id="trackingInput" placeholder="e.g. DG-TRK-ABC1234567" autocomplete="off">
+            <button id="trackBtn" data-action="track-order">
+              <span class="btn-text">Track Order</span>
+              <span class="btn-spinner" style="display:none"></span>
+            </button>
+          </div>
+          <p class="tracking-tab-hint">Find your tracking number in your order confirmation email or account page.</p>
+        </div>
+
+        <div id="tabOrder" class="tracking-tab-content" style="display:none">
+          <div class="tracking-input-group" style="flex-direction:column;gap:12px">
+            <input type="text" id="orderNumberInput" placeholder="e.g. DG-260715-1234" autocomplete="off">
+            <input type="email" id="orderEmailInput" placeholder="Email used for the order" autocomplete="off">
+            <button id="lookupBtn" data-action="lookup-order" style="width:100%">
+              <span class="btn-text">Look Up Order</span>
+              <span class="btn-spinner" style="display:none"></span>
+            </button>
+          </div>
+          <p class="tracking-tab-hint">Enter the order number and the email address you used when placing the order.</p>
+        </div>
+      </div>
+
+      <div class="tracking-loading" id="trackingLoading" style="display:none">
+        <div class="tracking-spinner"></div>
+        <p>Looking up your order...</p>
+      </div>
+
+      <div class="tracking-result" id="trackingResult">
+        <div class="tracking-status-card">
+          <div class="tracking-order-header">
+            <div>
+              <div class="tracking-order-number" id="resultOrderNumber"></div>
+              <div class="tracking-order-date" id="resultOrderDate"></div>
+            </div>
+            <span class="tracking-badge" id="resultStatusBadge"></span>
+          </div>
+          <div class="tracking-number-display" id="resultTrackingNumber"></div>
+
+          <div class="tracking-estimated-delivery" id="resultEstDelivery" style="display:none">
+            <div class="est-delivery-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <div>
+              <div class="est-delivery-label">Estimated Delivery</div>
+              <div class="est-delivery-date" id="estDeliveryDate"></div>
+            </div>
+          </div>
+
+          <div class="tracking-timeline" id="timelineContainer"></div>
+
+          <div class="tracking-items">
+            <h3>Order Items</h3>
+            <div id="trackingItems"></div>
+          </div>
+
+          <div class="tracking-summary" id="trackingSummary"></div>
+
+          <div class="tracking-address" id="trackingAddress"></div>
+
+          <div class="quick-links">
+            <a href="/">Continue Shopping</a>
+            <a href="/account">View All Orders</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="tracking-error" id="trackingError">
+        <div class="tracking-error-icon">🔍</div>
+        <h3 id="errorTitle">Order Not Found</h3>
+        <p id="errorMessage">We couldn't find an order with that tracking number. Please check and try again.</p>
+        <div class="quick-links">
+          <a href="/">Back to Home</a>
+          <a href="/account">My Account</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a class="footer-brand" href="/"><img src="/images/logo.svg" alt="DG Electronics" width="36" height="36" decoding="async" /><span>DG Electronics</span></a>
+        <p>Your trusted destination for premium phones, laptops, and accessories across Nigeria.</p>
+      </div>
+      <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="/">Home</a></li><li><a href="/#products">Products</a></li><li><a href="/#about">About Us</a></li><li><a href="/#contact">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Categories</h4><ul><li><a href="/#products">Phones</a></li><li><a href="/#products">Laptops</a></li><li><a href="/#products">Accessories</a></li><li><a href="/#products">Gaming</a></li></ul></div>
+      <div class="footer-col">
+        <h4>Contact Info</h4>
+        <ul class="footer-contact">
+          <li>📞 <a href="tel:+2349031355560">+234 (903) 135-5560</a></li>
+          <li>📧 <a href="mailto:danielokolie764@gmail.com">danielokolie764@gmail.com</a></li>
+          <li>📍 No 78 Market Road, Oyigbo, Rivers State</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> DG Electronics. All rights reserved.</p>
+      <div class="footer-bottom-links"><a href="javascript:void(0)" title="Coming soon">Privacy Policy</a><a href="javascript:void(0)" title="Coming soon">Terms of Service</a></div>
+    </div>
+  </footer>
+
+  <script src="/js/tracking-page.js"></script>
+</body>
+</html>
