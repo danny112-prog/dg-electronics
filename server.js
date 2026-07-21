@@ -2522,7 +2522,7 @@ app.use((err, req, res, next) => {
 
 // ── Start Server ──
 (async () => {
-  await dbConnection;
+  
   await seedData();
   app.listen(PORT, () => {
     console.log(`DG Electronics running at http://localhost:${PORT}`);
