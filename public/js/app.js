@@ -420,6 +420,12 @@
       var el = document.getElementById('searchSuggestions');
       if (el && !input.parentElement.contains(e.target)) el.style.display = 'none';
     });
+
+    var mobileInput = document.getElementById('navSearchMobile');
+    if (mobileInput) {
+      mobileInput.addEventListener('input', function() { input.value = mobileInput.value; });
+      mobileInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') { input.value = mobileInput.value; submitSearch(); var nl = document.getElementById('navLinks'); if (nl) nl.classList.remove('open'); var nt = document.getElementById('navToggle'); if (nt) { nt.classList.remove('active'); nt.setAttribute('aria-expanded', 'false'); } } });
+    }
   }
 
   function submitSearch() {
