@@ -165,13 +165,7 @@ const newsletterLimiter = rateLimit({ windowMs: 60 * 1000, max: 5, message: { er
 const orderLookupLimiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 20, message: { error: 'Too many lookup attempts. Please try again later.' } });
 const chatLimiter = rateLimit({ windowMs: 60 * 1000, max: 30, message: { error: 'Too many requests.' } });
 
-// ── MongoDB Connection ──
-const dbConnection = mongoose.connect(MONGO_URI)
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => {
-    console.log('MongoDB connection error:', err.message);
-    process.exit(1);
-  });
+
 
 // ═══════════════════════════════════════════════
 // MONGOOSE SCHEMAS
