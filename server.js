@@ -28,24 +28,8 @@ mongoose.connect(mongoUri)
     process.exit(1);
   });
 
-mongoose.connect(mongoUri)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => {
-    console.error("MongoDB connection error:", err.message);
-    process.exit(1);
-  });
-mongoose.connect(mongoUri)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => {
-    console.error("MongoDB connection error:", err.message);
-    process.exit(1);
-  });
-mongoose.connect(mongoUri)
-  .then(() => console.log("MongoDB connected"))
-  .catch(err => {
-    console.error("MongoDB connection error:", err.message);
-    process.exit(1);
-  });
+
+ 
 // ── Paystack Config ──
 const PAYSTACK_PUBLIC_KEY = process.env.PAYSTACK_PUBLIC_KEY || '';
 const PAYSTACK_SECRET_KEY = process.env.PAYSTACK_SECRET_KEY || '';
